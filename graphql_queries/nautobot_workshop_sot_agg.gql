@@ -1,4 +1,4 @@
-query DeviceDetailsWithBGP($device_id: ID!) {
+query ($device_id: ID!) {
   device(id: $device_id) {
     id
     hostname: name
@@ -73,6 +73,7 @@ query DeviceDetailsWithBGP($device_id: ID!) {
           name
         }
         address_families {
+          afi_safi
           import_policy
           export_policy
           extra_attributes
