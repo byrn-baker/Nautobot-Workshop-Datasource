@@ -1,0 +1,29 @@
+_metadata:
+  name: "Global IOS EXAMPLE Access Lists"
+  description: "Example Access lists for in bound traffic control."
+  weight: 150
+  is_active: true
+  config_context_schema: "Global ACL Config Schema"
+  roles:
+    - name: "Provider Router"
+acl:
+  - name: ALLOW_TRUSTED_IN_PREFIX
+    afi: ipv4
+    type: extended  # Added for clarity in rendering
+    entries:
+      - seq: 10
+        action: permit  # Explicit action
+        protocol: ip    # Specify protocol
+        source: 192.168.1.0/24
+        destination: any  # Assume any destination
+      - seq: 20
+        action: permit  # Explicit action
+        protocol: ip    # Specify protocol
+        source: 192.168.100.0/24
+        destination: any  # Assume any destination
+      - seq: 9999
+        action: deny    # Added implicit deny for security
+        protocol: ip
+        source: any
+        destination: any
+        log: true       # Optional: Log denies for monitoring
