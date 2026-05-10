@@ -29,3 +29,15 @@ route_maps:
     action: permit
     sequence: 10
     match_prefix_list: ALLOW_ALL_V6_OUT_PREFIX
+  - name: NETCLAW-IN
+    afi: ipv4
+    action: permit
+    sequence: 10
+    match_prefix_list: ALLOW_ALL_IN_PREFIX
+    set_actions:
+      - action: local-preference 50
+  - name: NETCLAW-OUT
+    afi: ipv4
+    action: permit
+    sequence: 10
+    match_prefix_list: ALLOW_ALL_OUT_PREFIX

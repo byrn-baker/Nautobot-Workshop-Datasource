@@ -19,5 +19,14 @@ data_schema:
             enum: ["permit", "deny"]
           match_prefix_list:
             type: string
-        required: ["name", "sequence", "action", "match_prefix_list"]
+          set_actions:
+            type: array
+            items:
+              type: object
+              properties:
+                action:
+                  type: string
+                  description: "e.g., local-preference 50, metric 100, origin incomplete, community 65000:100"
+              required: ["action"]
+        required: ["name", "sequence", "action"]
   required: ["route_maps"]
