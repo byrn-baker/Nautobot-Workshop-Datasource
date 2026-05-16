@@ -1,0 +1,19 @@
+# BGP aggregate-address statements for PE routers
+# Advertises SP internal infrastructure as a summary toward CEs
+# Ensures CE reachability to all SP loopbacks (needed for IP SLA, etc.)
+
+_metadata:
+  name: BGP Aggregates
+  description: BGP aggregate-address statements for PE routers to advertise toward CEs
+  weight: 300
+  is_active: true
+  roles:
+    - name: "Provider Edge Router"
+
+bgp_aggregates:
+  ipv4:
+    - prefix: 100.0.0.0/16
+      summary_only: true
+  ipv6:
+    - prefix: 2001:db8:100::/48
+      summary_only: true
